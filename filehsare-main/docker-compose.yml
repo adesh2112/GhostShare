@@ -1,0 +1,17 @@
+# Docker Compose configuration for Ephemeral File Sharing Platform
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ghostshare-web
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    env_file:
+      - .env.production
+    restart: always
